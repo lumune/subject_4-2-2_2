@@ -33,20 +33,21 @@ Zoom API（OAuth）を利用して、認証後にZoomミーティングを自動
 
 ### ① リポジトリをクローン
 
-``bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+``bash``
+``git clone https://github.com/your-username/your-repo-name.git``
+``cd your-repo-name``
 
 ### ② ライブラリをインストール
 
-pip install requests python-dotenv
+``bash``
+``pip install requests python-dotenv``
 
 ### ③ .envファイルを作成
 プロジェクト直下に .env ファイルを作成し、以下を記述してください。
 
-CLIENT_ID=あなたのClientID
-CLIENT_SECRET=あなたのClientSecret
-REDIRECT_URI=http://localhost:8000
+``CLIENT_ID=あなたのClientID``
+``CLIENT_SECRET=あなたのClientSecret``
+``REDIRECT_URI=http://localhost:8000``
 
 ※ .env はGitHubにアップしないでください
 
@@ -54,7 +55,8 @@ REDIRECT_URI=http://localhost:8000
 
 ## ▶️ 実行方法
 
-python zoom_auto.py
+``bash``
+``python zoom_auto.py``
 
 ---
 
