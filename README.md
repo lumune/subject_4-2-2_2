@@ -1,6 +1,10 @@
 # subject_4-2-2_2
+提出用課題
 
-# Zoom Meeting Auto Creator
+4-2-2 API連携実践課題
+
+# 2. Zoom API
+
 
 Zoom API（OAuth）を利用して、認証後にZoomミーティングを自動作成するPythonアプリです。  
 ターミナルから会議内容を入力し、ミーティングID・パスワード・参加URLを取得できます。
