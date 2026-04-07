@@ -91,7 +91,7 @@ def create_meeting(access_token):
     print("Join URL:", meeting.get("join_url"))
 
 
-# ④ OAuth受け取りサーバー
+# ④ OAuth受け取りサーバー（修正版）
 class OAuthHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         query = urllib.parse.urlparse(self.path).query
@@ -101,12 +101,13 @@ class OAuthHandler(BaseHTTPRequestHandler):
             code = params["code"][0]
             print("\n✅ code取得成功:", code)
 
-            # ブラウザに表示
+            # 👇 先にブラウザへレスポンス返す（重要）
             self.send_response(200)
+            self.send_header("Content-type", "text/html; charset=utf-8")
             self.end_headers()
             self.wfile.write("認証成功！ターミナルに戻ってください。".encode("utf-8"))
 
-            # トークン取得 → 会議作成
+            # 👇 そのあと処理
             token = get_access_token(code)
             if token:
                 create_meeting(token)
@@ -115,10 +116,10 @@ class OAuthHandler(BaseHTTPRequestHandler):
 def run_server():
     server = HTTPServer(("localhost", 8000), OAuthHandler)
     print("\n🚀 サーバー起動：http://localhost:8000")
-    server.handle_request()  # 1回だけ受け取る
+    server.handle_request()
 
 
-# 実行フロー
+# 実行
 if __name__ == "__main__":
     print("① このURLを開いて認証して👇\n")
     print(get_auth_url())
